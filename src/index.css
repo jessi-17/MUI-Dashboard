@@ -1,1 +1,57 @@
 @import "tailwindcss";
+:root{
+    --big-line-height: 150%;
+    --medium-line-height:120%;
+    --small-line-height:100%;
+    --base-letter-spacing: -2%;
+    --Figtree-h1:40px;
+    --Figtree-h2:32px;
+    --Figtree-h3:28px;
+    --Inter-h2:24px;
+    --Inter-h3:20px;
+    --Body-20:20px;
+    --Body-16:16px;
+    --Body-14:14px;
+    --caption-12:12px;
+    --caption-10:10px;
+    --Button-text:12px;
+    --small-text:10px;
+    /* background: linear-gradient(primary200,primary300); */
+    --Neutral-900:#0E0E05;
+    --Neutral-800:#3E3E37;
+    --Neutral-600:#6E6E69;
+    --Neutral-500:#878782;
+    --Neutral-400:#9F9F9B;
+    --Neutral-300:#B7B7B4;
+    --Neutral-200:#C3C3C1;
+    --Neutral-100:#CFCFCD;
+    --Neutral-50:#DBDBD9;
+    --Neutral-25:#E7E7E6;
+    --Neutral-0:#F3F3F2;
+    --Neutral-white:#FFFFFF;
+    --primary-900:#000033;
+    --primary-700:#00004D;
+    --primary-600:#000066;
+    --primary-500:#000080;
+    --primary-400:#0000B3;
+    --primary-color:#0000FF;
+    --primary-300:#4C4CFF;
+    --primary-200:#6666FF;
+    --primary-100:#8080FF;
+    --primary-50:#B2B2FF;
+    --primary-25:#E5E5FF;
+    --primary-0:#FAFAFF;
+    --Secondary-Blue-1:#51B0DD;
+    --Secondary-Blue-2:#3B80FB;
+    --Secondary-Green:#26CDAC;
+    --Secondary-Orange:#FCA33C;
+    --Secondary-purple-1:#5F40FF;
+    --Secondary-purple-2:#DF63BD;
+    --Secondary-yellow:#DCF765;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
