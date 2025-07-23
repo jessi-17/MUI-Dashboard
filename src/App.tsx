@@ -14,11 +14,11 @@ export default function App() {
 				display:"flex"
 			}}>
 					<MiniDrawer  />
-				<Container maxWidth="xl" disableGutters  sx={{ flexGrow: 1,  }} className="bg-amber-200 h-[150vh] flex flex-col gap-[16px] !ps-[32px]">
-						<Container maxWidth="xl" disableGutters className="h-[80px] flex items-center bg-blue-200">
+				<Container maxWidth="xl" disableGutters  sx={{ flexGrow: 1,  }} className="Content-container h-[150vh] flex flex-col gap-[16px]">
+				<Container maxWidth="xl" disableGutters className="h-[80px] flex items-center bg-white !pe-[32px] !ps-[32px] shadow">
 						<Header />
 						</Container>
-					<Container maxWidth="xl" disableGutters className="flex gap-[16px] flex-col">
+					<Container maxWidth="xl" disableGutters className="flex gap-[16px] flex-col !ps-[32px]">
 						<Contentrow1 />
 						<Contentrow2 />
 						<Contentrow3 />

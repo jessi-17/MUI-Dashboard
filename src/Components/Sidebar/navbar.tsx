@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled, useTheme, type Theme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import IconButton from '@mui/material/IconButton';
@@ -11,12 +10,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import type { CSSObject } from '@emotion/react';
 import { Container, Typography } from '@mui/material';
+import { AccountCircle, Apps, CurrencyExchange, EditDocument, FactCheck, Home, LiveHelp, Logout, Paid, Security, VideoChat } from '@mui/icons-material';
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -74,6 +72,48 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
+const navlinks = [
+    {
+        title: "home",
+        icon: <Home sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "Profile",
+        icon: <AccountCircle sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "Documents",
+        icon: <EditDocument sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "Shortlist",
+        icon: <FactCheck sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "Applications",
+        icon: <Apps sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "Meet",
+        icon: <VideoChat sx={{ fontSize: 20, mt: "6px" }} />
+    },
+    {
+        title: "Transaction",
+        icon: <Paid sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "Refer & Earn",
+        icon: <CurrencyExchange sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "Privacy",
+        icon: <Security sx={{ fontSize: 20 }} />
+    },
+    {
+        title: "FAQ",
+        icon: <LiveHelp sx={{ fontSize: 20 }} />
+    },
+]
 export default function MiniDrawer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -87,94 +127,192 @@ export default function MiniDrawer() {
     };
 
     return (
-            <Drawer variant="permanent" open={open} sx={{
-            }} >
-                <IconButton
-                    color='inherit'
-                    aria-label="open drawer"
-                    onClick={handleDrawerOpen}
-                    // edge="start"
-                    sx={[
-                        {
-                            padding:0,
-                            marginTop:"20px",
-                            display:"flex",
-                            justifyContent:"center",
-                            alignItems:"center"
-                        },
-                        open && { display: 'none' },
-                    ]}
-                >
-                    <MenuIcon style={{
-                        height:"32px",
-                        width:"32px"
-                    }} />
-                </IconButton>
-                <DrawerHeader sx={!open ? { display: 'none' ,} : undefined}>
-                    <Container maxWidth="xl" disableGutters className='flex items-center justify-between' sx={{
-                        paddingLeft:"0px",
-                        paddingRight:"0px",
-                    }}>
-                    <Typography variant='h6'>LOGO</Typography>
+        <Drawer variant="permanent" open={open} sx={{
+            border:0
+        }} >
+            <IconButton
+                color='inherit'
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                // edge="start"
+                sx={[
+                    {
+                        padding: 0,
+                        marginTop: "20px",
+                        
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
+                    },
+                    open && { display: 'none' },
+                ]}
+            >
+                <MenuIcon style={{
+                    height: "32px",
+                    width: "32px"
+                }} />
+            </IconButton>
+            <DrawerHeader sx={!open ? { display: 'none', } : undefined}>
+                <Container maxWidth="xl" className='flex items-center justify-between logo-container' >
+                    <Typography sx={{
+                        fontWeight: "800",
+                        fontFamily: "Figtree"
+                    }} className='logo'>LOGO</Typography>
                     <IconButton
                         onClick={handleDrawerClose}
-                        sx={!open ? { display: 'none' } : undefined}
+                        sx={!open ? { display: 'none', } : undefined}
                     >
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
-                    </Container>
-                </DrawerHeader>
-                <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts', 'All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
+                </Container>
+            </DrawerHeader>
+            <List
+                sx={[
+                    {
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "8px"
+                    },
+                    open ? { paddingLeft: "24px", paddingRight: "24px", } : {}
+                ]} >
+                {navlinks.map((item) => (
+                    <ListItem disablePadding sx={{
+                        borderRadius: "12px",
+                        padding: 0
+                    }}>
+                        <ListItemButton
+                            sx={[
+                                {
+                                    height: 40,
+                                },
+                                open
+                                ? {
+                                    
+                                    paddingLeft:"8px",
+                                    paddingRight:"16px"
+
+                                    }
+                                    : {
+                                        justifyContent: 'center',
+                                        alignItems: "center"
+                                    },
+                            ]}
+                            className='!rounded-[12px] active-bg-color '
+                        >
+                            <ListItemIcon
                                 sx={[
                                     {
-                                        minHeight: 48,
-                                        px: 2.5,
+                                        minWidth: 0,
+
+                                        justifyContent: 'center',
+                                        display: "flex",
+                                        alignItems: "center",
+                                        fontSize: "14px"
+                                    }
+                                    , open ? {
+                                        mr: "8px"
+                                    } : {
+
+                                    }
+                                ]}
+                                className='icon-color'
+                            >
+                                {item.icon}
+                            </ListItemIcon>
+                            <ListItemText disableTypography
+                                primary={item.title}
+                                sx={[
+                                    {
+                                        textTransform: "capitalize",
                                     },
                                     open
                                         ? {
-                                            justifyContent: 'initial',
+                                            opacity: 1,
                                         }
                                         : {
-                                            justifyContent: 'center',
+                                            padding: 0,
+                                            opacity: 0,
+                                            display: "none"
                                         },
                                 ]}
-                            >
-                                <ListItemIcon
-                                    sx={[
-                                        {
-                                            minWidth: 0,
-                                            justifyContent: 'center',
+                                className='small-text-style'
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+            <Container disableGutters className='absolute bottom-0'>
+                <List disablePadding sx={[
+                    {
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "8px"
+
+                    },
+                    open ? { paddingLeft: "24px", paddingRight: "24px", } : {}
+                ]} >
+                    <ListItem disableGutters sx={{
+                        borderRadius: "12px",
+                        padding: 0
+                    }}>
+                        <ListItemButton disableRipple sx={[
+                            {
+                                height: 60,
+                            },
+                            open
+                            ? {
+                                justifyContent: 'initial',
+                                paddingLeft:"8px",
+                                paddingRight:"16px"
+                            
+                                }
+                                : {
+                                    justifyContent: 'center',
+                                },
+                        ]}
+                            className='!rounded-[12px]'
+                        >
+                            <ListItemIcon sx={[
+                                {
+                                    minWidth: 0,
+                                    justifyContent: 'center',
+                                    width: "22px",
+                                    height: "32px",
+                                    alignItems: "center"
+                                },
+                                open
+                                    ? {
+                                        mr: "8px",
+                                    }
+                                    : {
+
+                                    },
+                            ]}
+                                className='icon-color' >
+                                <Logout style={{ color: "red" }} />
+                            </ListItemIcon>
+                            <ListItemText disableTypography
+                                primary="Logout"
+                                sx={[
+                                    {
+                                        textTransform: "capitalize",
+                                    },
+                                    open
+                                        ? {
+                                            opacity: 1,
+                                        }
+                                        : {
+                                            padding: 0,
+                                            opacity: 0,
+                                            display: "none"
                                         },
-                                        open
-                                            ? {
-                                                mr: 3,
-                                            }
-                                            : {
-                                                mr: 'auto',
-                                            },
-                                    ]}
-                                >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={text}
-                                    sx={[
-                                        open
-                                            ? {
-                                                opacity: 1,
-                                            }
-                                            : {
-                                                opacity: 0,
-                                            },
-                                    ]}
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
+                                ]}
+                                className='big-text-style'
+                            />
+                        </ListItemButton>
+                    </ListItem>
                 </List>
-            </Drawer>
+            </Container>
+        </Drawer>
     );
 }
