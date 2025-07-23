@@ -10,15 +10,15 @@ import Contentrow2 from "./Components/Content/Content-row-2"
 export default function App() {
 	return (
 		<>
-			<Container maxWidth="xl" sx={{
+			<Container maxWidth="xl" disableGutters sx={{
 				display:"flex"
 			}}>
 					<MiniDrawer  />
-				<Container maxWidth="xl"  sx={{ flexGrow: 1,  }} className="bg-amber-200 h-[150vh]">
-						<Container className="h-[80px] flex items-center">
+				<Container maxWidth="xl" disableGutters  sx={{ flexGrow: 1,  }} className="bg-amber-200 h-[150vh] flex flex-col gap-[16px] !ps-[32px]">
+						<Container maxWidth="xl" disableGutters className="h-[80px] flex items-center bg-blue-200">
 						<Header />
 						</Container>
-					<Container className="flex gap-[16px] flex-col">
+					<Container maxWidth="xl" disableGutters className="flex gap-[16px] flex-col">
 						<Contentrow1 />
 						<Contentrow2 />
 						<Contentrow3 />

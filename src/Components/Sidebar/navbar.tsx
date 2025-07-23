@@ -87,7 +87,8 @@ export default function MiniDrawer() {
     };
 
     return (
-            <Drawer variant="permanent" open={open} >
+            <Drawer variant="permanent" open={open} sx={{
+            }} >
                 <IconButton
                     color='inherit'
                     aria-label="open drawer"
@@ -96,14 +97,18 @@ export default function MiniDrawer() {
                     sx={[
                         {
                             padding:0,
-                            paddingTop:"20px",
+                            marginTop:"20px",
+                            display:"flex",
                             justifyContent:"center",
                             alignItems:"center"
                         },
                         open && { display: 'none' },
                     ]}
                 >
-                    <MenuIcon />
+                    <MenuIcon style={{
+                        height:"32px",
+                        width:"32px"
+                    }} />
                 </IconButton>
                 <DrawerHeader sx={!open ? { display: 'none' ,} : undefined}>
                     <Container maxWidth="xl" disableGutters className='flex items-center justify-between' sx={{
