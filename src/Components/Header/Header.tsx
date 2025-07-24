@@ -14,23 +14,26 @@ const Header = () => {
     };
     return (
         <>
-
-            <Container maxWidth="xl" sx={{
+            <Container disableGutters maxWidth="xl" sx={{
                 display: "flex",
-                flexWrap: "wrap",
                 gap: "16px",
                 alignItems: "center",
                 justifyContent: "space-between", width: "100%",
+                position:"relative",
+                top:0
 
-            }}>
+            }} className="padding-Header">
 
                 <Box
                     sx={{
-                        display: 'flex', alignItems: 'center', width: "300px", height: "36px", border:2, borderRadius: "36px",
-                    }} className="searchbox"
+                        display: 'flex', alignItems: 'center', height: "44px", border:2, borderRadius: "36px",
+                        position:"sticky",
+                        top:0,
+                        
+                    }} className="searchbox w-max md:w-[362px]"
                 >
-                    <IconButton type="button" aria-label="search" className="flex ">
-                        <Search style={{ fontSize: "20px" }} />
+                    <IconButton type="button" aria-label="search" className="flex">
+                        <Search style={{ fontSize: "24px" }} />
                     </IconButton>
                     <InputBase
                         className="searchboxtext"
@@ -40,11 +43,9 @@ const Header = () => {
                 </Box>
 
                 <Box sx={{
-                    display: "flex",
-                    gap: "32px",
-                    height:"44px",
+                    height:"32px", 
                     alignItems: "center"
-                }}>
+                }} className="flex gap-[10px] md:gap-[32px]">
 
                     <Badge color="primary" variant="dot">
                         <Notifications  style={{fontSize:"20px"}} className="text-gray-400"/>
@@ -53,7 +54,7 @@ const Header = () => {
                         display: "flex",
                         gap: "8px",
                         alignItems: "center"
-                    }}>
+                    }} className="">
                         <Avatar sx={{
                             width:"32px",
                             height:"32px",
@@ -62,10 +63,10 @@ const Header = () => {
                         <Box sx={{
                             display: "flex",
                             flexDirection: "column",
-                            gap:"1px"
-                        }}>
+                            gap:"0px"
+                        }} className="!hidden !md:visible !md:flex">
                             <Typography variant="body2" className="header-username">username</Typography>
-                            <Typography variant="caption" className="text-gray-500 header-useremail">jessi.bhagat@gmail.com</Typography>
+                            <Typography variant="body2" className=" header-useremail">jessi.bhagat@gmail.com</Typography>
                         </Box>
                         <Tooltip title="Account settings">
                             <IconButton
@@ -75,7 +76,7 @@ const Header = () => {
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : undefined}
                             >
-                                <ArrowDropDown />
+                                <ArrowDropDown className="text-black" />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -118,8 +119,8 @@ const Header = () => {
                             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
-                            <MenuItem onClick={handleClose} className="menu-item">
-                                <Avatar /> Profile
+                            <MenuItem onClick={handleClose} className="menu-item flex items-center">
+                                <Avatar style={{fontSize:"32px"}}/> Profile
                             </MenuItem>
                             <MenuItem onClick={handleClose} className="menu-item">
                                 <Avatar /> My account
@@ -137,9 +138,9 @@ const Header = () => {
                                 </ListItemIcon>
                                 Settings
                             </MenuItem>
-                            <MenuItem onClick={handleClose} className="menu-item">
+                            <MenuItem onClick={handleClose} className="menu-item !text-red-500">
                                 <ListItemIcon>
-                                    <Logout fontSize="small" />
+                                    <Logout fontSize="small" style={{color:"red"}} />
                                 </ListItemIcon>
                                 Logout
                             </MenuItem>
@@ -147,7 +148,7 @@ const Header = () => {
                     </Box>
                 </Box>
 
-            </Container>
+            </Container> 
         </>
     )
 }

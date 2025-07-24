@@ -11,10 +11,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import type { CSSObject } from '@emotion/react';
-import { Container, Typography } from '@mui/material';
-import { AccountCircle, Apps, CurrencyExchange, EditDocument, FactCheck, Home, LiveHelp, Logout, Paid, Security, VideoChat } from '@mui/icons-material';
+import { Collapse, Container,  Typography } from '@mui/material';
+import { AccountCircle, Apps, CurrencyExchange, EditDocument, ExpandLess, ExpandMore, FactCheck,  Home,  LiveHelp, Logout, Paid, PausePresentation, Security,  VideoChat } from '@mui/icons-material';
 
-const drawerWidth = 260;
+const drawerWidth = 250;
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -34,6 +34,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     width: `calc(${theme.spacing(7)} + 1px)`,
     [theme.breakpoints.up('sm')]: {
         width: `calc(${theme.spacing(8)} + 1px)`,
+        
     },
 });
 
@@ -42,7 +43,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
 
@@ -72,7 +72,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-const navlinks = [
+const navlinks1 = [
     {
         title: "home",
         icon: <Home sx={{ fontSize: 20 }} />
@@ -81,10 +81,8 @@ const navlinks = [
         title: "Profile",
         icon: <AccountCircle sx={{ fontSize: 20 }} />
     },
-    {
-        title: "Documents",
-        icon: <EditDocument sx={{ fontSize: 20 }} />
-    },
+]
+const navlinks2 = [
     {
         title: "Shortlist",
         icon: <FactCheck sx={{ fontSize: 20 }} />
@@ -117,7 +115,11 @@ const navlinks = [
 export default function MiniDrawer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [openc, setOpenc] = React.useState(true);
 
+    const handleClick = () => {
+        setOpenc(!openc);
+    };
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -128,18 +130,19 @@ export default function MiniDrawer() {
 
     return (
         <Drawer variant="permanent" open={open} sx={{
-            border:0
-        }} >
+            border: 0,
+        }}
+        className='DrawerComp'
+        >
             <IconButton
                 color='inherit'
                 aria-label="open drawer"
                 onClick={handleDrawerOpen}
-                // edge="start"
                 sx={[
                     {
                         padding: 0,
                         marginTop: "20px",
-                        
+
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center"
@@ -153,7 +156,7 @@ export default function MiniDrawer() {
                 }} />
             </IconButton>
             <DrawerHeader sx={!open ? { display: 'none', } : undefined}>
-                <Container maxWidth="xl" className='flex items-center justify-between logo-container' >
+                <Container  className='flex items-center justify-between logo-container' >
                     <Typography sx={{
                         fontWeight: "800",
                         fontFamily: "Figtree"
@@ -173,9 +176,12 @@ export default function MiniDrawer() {
                         flexDirection: "column",
                         gap: "8px"
                     },
-                    open ? { paddingLeft: "24px", paddingRight: "24px", } : {}
-                ]} >
-                {navlinks.map((item) => (
+
+                    open ? { paddingLeft: "24px", paddingRight: "24px", } : {marginTop:"20px",marginInline:"8px"}
+                ]}
+                aria-labelledby="nested-list-subheader"
+            >
+                {navlinks1.map((item) => (
                     <ListItem disablePadding sx={{
                         borderRadius: "12px",
                         padding: 0
@@ -186,11 +192,313 @@ export default function MiniDrawer() {
                                     height: 40,
                                 },
                                 open
-                                ? {
-                                    
-                                    paddingLeft:"8px",
-                                    paddingRight:"16px"
+                                    ? {
 
+                                    }
+                                    : {
+                                        justifyContent: 'center',
+                                        alignItems: "center"
+                                    },
+                            ]}
+                            className='!rounded-[12px] active-bg-color '
+                        >
+                            <ListItemIcon
+                                sx={[
+                                    {
+                                        minWidth: 0,
+
+                                        justifyContent: 'center',
+                                        display: "flex",
+                                        alignItems: "center",
+                                        fontSize: "14px"
+                                    }
+                                    , open ? {
+                                        mr: "8px"
+                                    } : {
+
+                                    }
+                                ]}
+                                className='icon-color'
+                            >
+                                {item.icon}
+                            </ListItemIcon>
+                            <ListItemText disableTypography
+                                primary={item.title}
+                                sx={[
+                                    {
+                                        textTransform: "capitalize",
+                                        display:"flex",
+                                        alignItems:"center",
+                                        
+                                    },
+                                    open
+                                        ? {
+                                            padding:"10px",
+                                            paddingLeft: "0px",
+                                            paddingRight: "0px",
+                                            opacity: 1,
+                                        }
+                                        : {
+                                            padding: 0,
+                                            opacity: 0,
+                                            display: "none"
+                                        },
+                                ]}
+                                className='small-text-style'
+                            />
+                        </ListItemButton>
+
+                    </ListItem>
+                ))}
+                <ListItem disablePadding sx={{
+                        borderRadius: "12px",
+                        padding: 0
+                    }}>
+                <ListItemButton onClick={handleClick}  sx={[
+                                {
+                                    height: 40,
+                                },
+                                open
+                                    ? {  
+                                    }
+                                    : {
+                                        paddingLeft: "24px",
+                                        justifyContent: 'center',
+                                        alignItems: "center"
+                                    },
+                            ]}
+                            className='!rounded-[12px] active-bg-color '>
+                    <ListItemIcon sx={[
+                                    {
+                                        minWidth: 0,
+                                        justifyContent: 'center',
+                                        display: "flex",
+                                        alignItems: "center",
+                                        fontSize: "14px"
+                                    }
+                                    , open ? {
+                                        mr: "8px"
+                                    } : {
+
+                                    }
+                                ]}
+                                className='icon-color'>
+                        <EditDocument sx={{ fontSize: 20 }} />
+                    </ListItemIcon>
+                    
+                    <ListItemText  disableTypography
+                                primary="Documents"
+                                sx={[
+                                    {
+                                        textTransform: "capitalize",
+                                    },
+                                    open
+                                        ? {
+                                            opacity: 1,
+                                            padding:"18px",
+                                            paddingLeft: "0px",
+                                            paddingRight: "32px",
+                                        }
+                                        : {
+                                            padding: 0,
+                                            opacity: 0,
+                                            display: "none"
+                                        },
+                                ]}
+                                className='small-text-style' />
+                    {openc ? <ExpandLess style={{color:"gray"}} className='icon-style' /> : <ExpandMore style={{color:"gray"}} className='icon-style' />}
+                </ListItemButton>
+                </ListItem>
+                <Collapse in={openc} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={[
+                                {
+                                   
+                                },
+                                open
+                                ? {
+                                    height: 32,
+                                    paddingLeft: "32px",
+                                    paddingRight: "16px"
+                                }
+                                : {
+                                        height: 40,
+                                        justifyContent: 'center',
+                                        alignItems: "center"
+                                    },
+                            ]}
+                            className='!rounded-[12px] active-bg-color '>
+                            <ListItemIcon sx={[
+                                    {
+                                        minWidth: 0,
+                                        justifyContent: 'center',
+                                        display: "flex",
+                                        alignItems: "center",
+                                        fontSize: "12px"
+                                    }
+                                    , open ? {
+                                        mr: "8px"
+                                    } : {
+
+                                    }
+                                ]}
+                                className='icon-color'>
+                                <PausePresentation sx={{ fontSize: 18 }} />
+                            </ListItemIcon>
+                            <ListItemText primary="PYQ"  disableTypography
+                                sx={[
+                                    {
+                                        textTransform: "capitalize",
+                                         display:"flex",
+                                    alignItems:"center",
+                                    // justifyContent:"center"
+                                    },
+                                    open
+                                        ? {
+                                            mt:"5px",
+                                            opacity: 1,
+                                            padding:"18px",
+                                            paddingLeft: "0px",
+                                            paddingRight: "0px",
+                                        }
+                                        : {
+                                            padding: 0,
+                                            opacity: 0,
+                                            display: "none"
+                                        },
+                                ]}
+                                className='small-text-style small-text-style-2'  />
+                        </ListItemButton>
+                        <ListItemButton sx={[
+                                {
+                                   
+                                },
+                                open
+                                ? {
+                                    height: 32,
+                                    paddingLeft: "32px",
+                                    paddingRight: "16px"
+                                }
+                                : {
+                                        height: 40,
+                                        justifyContent: 'center',
+                                        alignItems: "center"
+                                    },
+                            ]}
+                            className='!rounded-[12px] active-bg-color '>
+                            <ListItemIcon sx={[
+                                    {
+                                        minWidth: 0,
+                                        justifyContent: 'center',
+                                        display: "flex",
+                                        alignItems: "center",
+                                        fontSize: "12px"
+                                    }
+                                    , open ? {
+                                        mr: "8px"
+                                    } : {
+
+                                    }
+                                ]}
+                                className='icon-color'>
+                                <PausePresentation sx={{ fontSize: 18 }} />
+                            </ListItemIcon>
+                            <ListItemText primary="Saved Questions"  disableTypography
+                                sx={[
+                                    {
+                                        textTransform: "capitalize",
+                                         display:"flex",
+                                    alignItems:"center",
+                                    // justifyContent:"center"
+                                    },
+                                    open
+                                        ? {
+                                            mt:"5px",
+                                            opacity: 1,
+                                            padding:"18px",
+                                            paddingLeft: "0px",
+                                            paddingRight: "0px",
+                                        }
+                                        : {
+                                            padding: 0,
+                                            opacity: 0,
+                                            display: "none"
+                                        },
+                                ]}
+                                className='small-text-style small-text-style-2'  />
+                        </ListItemButton>
+                        <ListItemButton sx={[
+                                {
+                                   
+                                },
+                                open
+                                ? {
+                                    height: 32,
+                                    paddingLeft: "32px",
+                                    paddingRight: "16px"
+                                }
+                                : {
+                                        height: 40,
+                                        justifyContent: 'center',
+                                        alignItems: "center"
+                                    },
+                            ]}
+                            className='!rounded-[12px] active-bg-color '>
+                            <ListItemIcon sx={[
+                                    {
+                                        minWidth: 0,
+                                        justifyContent: 'center',
+                                        display: "flex",
+                                        alignItems: "center",
+                                        fontSize: "12px"
+                                    }
+                                    , open ? {
+                                        mr: "8px"
+                                    } : {
+
+                                    }
+                                ]}
+                                className='icon-color'>
+                                <PausePresentation sx={{ fontSize: 18 }} />
+                            </ListItemIcon>
+                            <ListItemText primary="Important Lectures"  disableTypography
+                                sx={[
+                                    {
+                                        textTransform: "capitalize",
+                                         display:"flex",
+                                    alignItems:"center",
+                                    // justifyContent:"center"
+                                    },
+                                    open
+                                        ? {
+                                            mt:"5px",
+                                            opacity: 1,
+                                            padding:"18px",
+                                            paddingLeft: "0px",
+                                            paddingRight: "0px",
+                                        }
+                                        : {
+                                            padding: 0,
+                                            opacity: 0,
+                                            display: "none"
+                                        },
+                                ]}
+                                className='small-text-style small-text-style-2'  />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+
+                {navlinks2.map((item) => (
+                    <ListItem disablePadding sx={{
+                        borderRadius: "12px",
+                    }}>
+                        <ListItemButton
+                            sx={[
+                                {
+                                    height: 40,
+                                },
+                                open
+                                    ? {
                                     }
                                     : {
                                         justifyContent: 'center',
@@ -228,6 +536,9 @@ export default function MiniDrawer() {
                                     open
                                         ? {
                                             opacity: 1,
+                                            padding:"18px",
+                                            paddingLeft: "0px",
+                                            paddingRight: "0px",
                                         }
                                         : {
                                             padding: 0,
@@ -238,9 +549,13 @@ export default function MiniDrawer() {
                                 className='small-text-style'
                             />
                         </ListItemButton>
+
                     </ListItem>
                 ))}
             </List>
+
+
+
             <Container disableGutters className='absolute bottom-0'>
                 <List disablePadding sx={[
                     {
@@ -260,11 +575,11 @@ export default function MiniDrawer() {
                                 height: 60,
                             },
                             open
-                            ? {
-                                justifyContent: 'initial',
-                                paddingLeft:"8px",
-                                paddingRight:"16px"
-                            
+                                ? {
+                                    justifyContent: 'initial',
+                                    paddingLeft: "8px",
+                                    paddingRight: "16px"
+
                                 }
                                 : {
                                     justifyContent: 'center',
