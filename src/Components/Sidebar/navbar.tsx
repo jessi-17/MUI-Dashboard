@@ -168,6 +168,7 @@ export default function MiniDrawer() {
                     </IconButton>
                 </Container>
             </DrawerHeader>
+            <Box className="!max-h-[64vh] overflow-auto">
             <List
                 sx={[
                     {
@@ -552,6 +553,7 @@ export default function MiniDrawer() {
                     </ListItem>
                 ))}
             </List>
+            </Box>
             <Container disableGutters className='absolute bottom-0 flex flex-col gap-[4px]'>
             <Box className="flex flex-col gap-[8px]">
                 <Card elevation={0}
