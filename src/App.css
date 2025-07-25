@@ -515,3 +515,6 @@ body {
     line-height: 150%;
     text-align: center;
 }
+::-webkit-scrollbar {
+    display: none;
+}
