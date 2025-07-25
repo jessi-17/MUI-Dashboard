@@ -11,9 +11,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import type { CSSObject } from '@emotion/react';
-import { Collapse, Container,  Typography } from '@mui/material';
+import { Avatar, Box, Button, Card, Collapse, Container,  Icon,  Typography } from '@mui/material';
 import { AccountCircle, Apps, CurrencyExchange, EditDocument, ExpandLess, ExpandMore, FactCheck,  Home,  LiveHelp, Logout, Paid, PausePresentation, Security,  VideoChat } from '@mui/icons-material';
-
+import avatarimg from "../../assets/2.jpg"
 const drawerWidth = 250;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -71,7 +71,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         ],
     }),
 );
-
 const navlinks1 = [
     {
         title: "home",
@@ -174,10 +173,11 @@ export default function MiniDrawer() {
                     {
                         display: "flex",
                         flexDirection: "column",
-                        gap: "8px"
+                        gap: "2px",
                     },
 
-                    open ? { paddingLeft: "24px", paddingRight: "24px", } : {marginTop:"20px",marginInline:"8px"}
+                    open ? { paddingLeft: "24px", paddingRight: "24px", } : {marginTop:"20px",marginInline:"8px",
+                    }
                 ]}
                 aria-labelledby="nested-list-subheader"
             >
@@ -260,6 +260,7 @@ export default function MiniDrawer() {
                                 },
                                 open
                                     ? {  
+                                        justifyContent:"center"
                                     }
                                     : {
                                         paddingLeft: "24px",
@@ -310,11 +311,10 @@ export default function MiniDrawer() {
                 </ListItemButton>
                 </ListItem>
                 <Collapse in={openc} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
+                    <List component="div" disablePadding
+
+                    >
                         <ListItemButton sx={[
-                                {
-                                   
-                                },
                                 open
                                 ? {
                                     height: 32,
@@ -487,7 +487,6 @@ export default function MiniDrawer() {
                         </ListItemButton>
                     </List>
                 </Collapse>
-
                 {navlinks2.map((item) => (
                     <ListItem disablePadding sx={{
                         borderRadius: "12px",
@@ -553,16 +552,54 @@ export default function MiniDrawer() {
                     </ListItem>
                 ))}
             </List>
-
-
-
-            <Container disableGutters className='absolute bottom-0'>
+            <Container disableGutters className='absolute bottom-0 flex flex-col gap-[4px]'>
+            <Box className="flex flex-col gap-[8px]">
+                <Card elevation={0}
+                     sx={[
+                    {
+                        display:"flex",
+                        flexDirection:"column",
+                        gap:"8px"
+                    },
+                    open ? {
+                        marginLeft: "24px", marginRight: "24px", 
+                        paddingX:"10px",
+                        paddingY:"18px"
+                    } : 
+                    {display:"none",
+                    }
+                ]}
+                className='sessioncard'
+                    >
+                <Box sx={{
+                        display: "flex",
+                        gap: "8px",
+                        alignItems: "center"
+                    }} className="">
+                        <Avatar sx={{
+                            width:"32px",
+                            height:"32px",
+                            objectFit:"cover"
+                        }} src={avatarimg}></Avatar>
+                        <Box sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap:"0px"
+                        }} className="user-id">
+                            <Typography variant="body2" className="header-username2">username</Typography>
+                            <Typography variant="body2" className=" header-useremail2">jessi.bhagat@gmail.com</Typography>
+                        </Box>
+                        </Box>
+                    <Typography variant='body2'  className='para-session'>some thing written here.</Typography>
+                    <Button variant="contained" sx={{
+          }} className="btn-1 btn-2">Book A Session</Button>
+                </Card>
+                </Box>
                 <List disablePadding sx={[
                     {
                         display: "flex",
                         flexDirection: "column",
                         gap: "8px"
-
                     },
                     open ? { paddingLeft: "24px", paddingRight: "24px", } : {}
                 ]} >

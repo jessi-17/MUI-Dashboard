@@ -1,4 +1,4 @@
-import {  ArrowDropDown, Logout, Notifications, PersonAdd, Search, Settings } from "@mui/icons-material"
+import {  ArrowDropDown, KeyboardArrowDown, Logout, Notifications, PersonAdd, Search, Settings } from "@mui/icons-material"
 import { Avatar, Badge, Box, Container, Divider, IconButton, InputBase, ListItemIcon, Menu, MenuItem, Tooltip, Typography } from "@mui/material"
 import avatarimg from "../../assets/2.jpg"
 import React from "react";
@@ -63,8 +63,7 @@ const Header = () => {
                         <Box sx={{
                             display: "flex",
                             flexDirection: "column",
-                            gap:"0px"
-                        }} className="!hidden !md:visible !md:flex">
+                        }} className="user-id">
                             <Typography variant="body2" className="header-username">username</Typography>
                             <Typography variant="body2" className=" header-useremail">jessi.bhagat@gmail.com</Typography>
                         </Box>
@@ -76,7 +75,7 @@ const Header = () => {
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : undefined}
                             >
-                                <ArrowDropDown className="text-black" />
+                                <KeyboardArrowDown className="text-gray-800" />
                             </IconButton>
                         </Tooltip>
                         <Menu
