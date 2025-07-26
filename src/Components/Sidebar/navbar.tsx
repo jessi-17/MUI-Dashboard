@@ -12,7 +12,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import type { CSSObject } from '@emotion/react';
 import { Avatar, Box, Button, Card, Collapse, Container,  Icon,  Typography } from '@mui/material';
-import { AccountCircle, Apps, CurrencyExchange, EditDocument, ExpandLess, ExpandMore, FactCheck,  Home,  LiveHelp, Logout, Paid, PausePresentation, Security,  VideoChat } from '@mui/icons-material';
+import { AccountCircle, Apps, CurrencyExchange, EditDocument, ExpandLess, ExpandMore, FactCheck,  FormatAlignCenter,  FormatAlignLeft,  FormatAlignRight,  Home,  LiveHelp, Logout, Paid, PausePresentation, Security,  VideoChat } from '@mui/icons-material';
 import avatarimg from "../../assets/2.jpg"
 const drawerWidth = 250;
 
@@ -122,11 +122,9 @@ export default function MiniDrawer() {
     const handleDrawerOpen = () => {
         setOpen(true);
     };
-
     const handleDrawerClose = () => {
         setOpen(false);
     };
-
     return (
         <Drawer variant="permanent" open={open} sx={{
             border: 0,
@@ -141,7 +139,6 @@ export default function MiniDrawer() {
                     {
                         padding: 0,
                         marginTop: "20px",
-
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center"
@@ -149,7 +146,7 @@ export default function MiniDrawer() {
                     open && { display: 'none' },
                 ]}
             >
-                <MenuIcon style={{
+                <FormatAlignRight style={{
                     height: "32px",
                     width: "32px"
                 }} />
@@ -164,7 +161,7 @@ export default function MiniDrawer() {
                         onClick={handleDrawerClose}
                         sx={!open ? { display: 'none', } : undefined}
                     >
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        {theme.direction === 'rtl' ? <FormatAlignRight /> : <FormatAlignLeft />}
                     </IconButton>
                 </Container>
             </DrawerHeader>
@@ -182,8 +179,8 @@ export default function MiniDrawer() {
                 ]}
                 aria-labelledby="nested-list-subheader"
             >
-                {navlinks1.map((item) => (
-                    <ListItem disablePadding sx={{
+                {navlinks1.map((item,index) => (
+                    <ListItem key={index} disablePadding sx={{
                         borderRadius: "12px",
                         padding: 0
                     }}>
@@ -488,8 +485,8 @@ export default function MiniDrawer() {
                         </ListItemButton>
                     </List>
                 </Collapse>
-                {navlinks2.map((item) => (
-                    <ListItem disablePadding sx={{
+                {navlinks2.map((item,index) => (
+                    <ListItem key={index} disablePadding sx={{
                         borderRadius: "12px",
                     }}>
                         <ListItemButton

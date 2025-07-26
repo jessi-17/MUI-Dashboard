@@ -355,7 +355,6 @@ body {
 }
 
 .green-avatar {
-
     background-color: var(--Secondary-Green);
 }
 
@@ -466,7 +465,12 @@ body {
     letter-spacing: -0.02rem;
     text-transform: capitalize;
 }
-
+@media(max-width:380px) {
+    .title-imagecard{
+        font-size: var(--Inter-h3);
+    }
+    
+}
 .para-imagecard {
     font-family: "Inter", sans-serif;
     font-size: var(--Body-14);
@@ -497,7 +501,8 @@ body {
 
 .image-card {
     background-image: url("./assets/Technology.png");
-    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-color: #00000081;
     background-blend-mode: darken;
 }

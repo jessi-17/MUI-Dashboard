@@ -8,37 +8,36 @@ import purplestat from "../../assets/purple.png"
 import orangestat from "../../assets/orange.png"
 import bluestat from "../../assets/blue.png"
 import { DocumentScanner, People, PublishedWithChanges, QueuePlayNext } from "@mui/icons-material"
+import "../../media.css"
+
 const Contentrow1 = () => {
   return (
-    <Container disableGutters maxWidth="xl" className='grid grid-cols-12  gap-[40px]'>
-      <Box 
-      sx={{
-      }} className="col-span-10 sm:col-span-12 lg:col-span-7">
-    <Box>
-      <Card elevation={0} sx={{
-        pl:"32px",
-        pr:"32px",
-        pt:"16px",
-        pb:"16px",
-
-      }}  className="flex-col flex md:flex-row justify-between items-center !rounded-[24px]" > 
-        <Box className="flex flex-col gap-[16px] max-w-[329px]">
-          <Typography variant="body1" className="heading-1 flex gap-[8px] items-center">Hi,{name} <span><img src={girl}  alt="" /></span></Typography>
-          <Typography variant="body2" className="sub-heaidng">What do you want to learn today with your partner ?</Typography>
-          <Typography variant="body2" className="paragraph-1">Discover courses, track progress and achieve your learning goods seamlessly.</Typography>
-          <Button variant="contained" sx={{
-            width:"123px"
-          }} className="btn-1">Explore Courses</Button>
-        </Box>
-        <Box >
-          <img src={heroimg}></img>
-        </Box>
-      </Card>
-    </Box>
-      </Box>
-      <Box sx={{
-      }} className="col-span-10 sm:col-span-12 lg:col-span-5">
-    <Box
+    <>
+    <Container maxWidth="xl" disableGutters className="grid grid-col-6 md:gris-cols-8 lg:grid-cols-10 gap-[16px]">
+        <Box className="col-span-4 md:col-span-5 lg:col-span-6">     
+             <Card elevation={0} sx={{
+                pl:"32px",
+                pr:"32px",
+                pt:"16px",
+                pb:"16px",
+        
+              }}  className="flex-col flex md:flex-row justify-between items-center !rounded-[24px]" > 
+                <Box className="flex flex-col gap-[16px]"
+                sx={{maxWidth:{sm:"480px",md:"400px",lg:"329px"}}}
+                >
+                  <Typography variant="body1" className="heading-1 flex gap-[8px] items-center">Hi,{name} <span><img src={girl}  alt="" /></span></Typography>
+                  <Typography variant="body2" className="sub-heaidng">What do you want to learn today with your partner ?</Typography>
+                  <Typography variant="body2" className="paragraph-1">Discover courses, track progress and achieve your learning goods seamlessly.</Typography>
+                  <Button variant="contained" sx={{
+                    width:"123px"
+                  }} className="btn-1">Explore Courses</Button>
+                </Box>
+                <Box >
+                  <img src={heroimg}></img>
+                </Box>
+              </Card></Box>
+        <Box className="col-span-4 md:col-span-5 lg:col-span-4">
+                <Box
      className="Stats-cards rounded-[12px] ">
       <Card elevation={0}  className="cards cards-1 relative">
         <img src={orangestat} className=" -z-0 max-w-[143px] h-[72px] absolute right-0" />
@@ -81,8 +80,9 @@ const Contentrow1 = () => {
         </Box>
       </Card>
     </Box>
-      </Box>
+        </Box>
     </Container>
+    </>
   )
 }
 

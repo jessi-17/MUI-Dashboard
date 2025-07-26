@@ -8,7 +8,7 @@ const  cardcontent = [
     subheading:"CT groups of Institutions"
   },
   {
-    title:"Bachelors in Computer Science Engineering",
+    title:"Bachelors in Computer Science and Engineering",
     cash:"$11,584",
     img:"",
     subheading:"Lovely Proffessional university"
@@ -27,7 +27,7 @@ const Contentrow2 = () => {
         <Typography className="row-2-heading">Courses</Typography>
         <Typography className="row-2-subheading">See More <ArrowRightAlt /></Typography>
       </Box>
-      <Box className="flex gap-[16px] min-w-min flex-col md:flex-row flex-wrap">
+      <Box className="flex gap-[16px] flex-col md:flex-row flex-wrap">
         {cardcontent.map((item) => (
         <Card elevation={0} className="flex-1 flex-wrap flex !flex-col !p-[14px] gap-[16px] !rounded-[12px] !overflow-visible ">
           <Typography className="card-2-title">{item.title}</Typography>
