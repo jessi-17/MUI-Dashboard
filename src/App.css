@@ -229,20 +229,23 @@ body {
 .DrawerComp {
     font-family: "Figtree", sans-serif !important;
 }
-
-@media(max-width:425px) {
+@media(max-width:500px) {
     .DrawerComp {
         position: absolute;
     }
-
     .Content-container {
         overflow: hidden;
         margin-left: 56px;
     }
-
+    
     .user-id {
         display: none;
     }
+    
+}
+
+@media(max-width:425px) {
+
 
 }
 

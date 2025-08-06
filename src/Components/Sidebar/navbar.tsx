@@ -147,8 +147,8 @@ export default function MiniDrawer() {
                 ]}
             >
                 <FormatAlignRight style={{
-                    height: "32px",
-                    width: "32px"
+                    height: "24px",
+                    width: "24px"
                 }} />
             </IconButton>
             <DrawerHeader sx={!open ? { display: 'none', } : undefined}>

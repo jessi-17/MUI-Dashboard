@@ -26,7 +26,7 @@ const carddata = [
 ]
 const Contentrow3 = () => {
   return (
-    <Container disableGutters maxWidth="xl" sx={{}} className="grid grid-cols-10 gap-[16px] !mt-[20px]">
+    <Container disableGutters maxWidth={false} sx={{}} className="grid grid-cols-10 gap-[16px] !mt-[20px]">
         <Box className="col-span-10 md:col-span-5 lg:col-span-4 bg-white !p-[16px] rounded-[12px] gap-[16px]">
         <div className='flex justify-between'>
           <Typography className='title-imagecard'>Study Report</Typography>
