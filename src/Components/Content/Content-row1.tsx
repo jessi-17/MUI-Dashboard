@@ -13,7 +13,7 @@ import "../../media.css"
 const Contentrow1 = () => {
   return (
     <>
-    <Container maxWidth="xl" disableGutters className="grid grid-col-6 md:gris-cols-8 lg:grid-cols-10 gap-[16px]">
+    <Container maxWidth={false} disableGutters className="grid grid-col-6 md:gris-cols-8 lg:grid-cols-10 gap-[16px]">
         <Box className="col-span-4 md:col-span-5 lg:col-span-6">     
              <Card elevation={0} sx={{
                 pl:"32px",

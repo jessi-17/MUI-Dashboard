@@ -22,10 +22,10 @@ const  cardcontent = [
 ]
 const Contentrow2 = () => {
   return (
-    <Container maxWidth="xl" disableGutters className="flex flex-col  gap-[16px]">
+    <Container maxWidth={false} disableGutters className="flex flex-col  gap-[16px]">
       <Box className="flex justify-between items-center">
         <Typography className="row-2-heading">Courses</Typography>
-        <Typography className="row-2-subheading">See More <ArrowRightAlt /></Typography>
+        <Typography className="row-2-subheading"><a href="#">See More <ArrowRightAlt /></a> </Typography>
       </Box>
       <Box className="flex gap-[16px] flex-col md:flex-row flex-wrap">
         {cardcontent.map((item) => (

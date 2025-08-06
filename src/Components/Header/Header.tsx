@@ -14,7 +14,7 @@ const Header = () => {
     };
     return (
         <>
-            <Container disableGutters maxWidth="xl" sx={{
+            <Container disableGutters maxWidth={false} sx={{
                 display: "flex",
                 gap: "16px",
                 alignItems: "center",
